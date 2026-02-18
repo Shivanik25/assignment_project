@@ -1,0 +1,23 @@
+{% extends 'assignment/base.html' %}
+
+{% block content %}
+<h2>Submitted Assignments</h2>
+
+{% for assignment in assignments %}
+<div class="card">
+    <p><strong>Student:</strong> {{ assignment.student_name }}</p>
+    <p><strong>Title:</strong> {{ assignment.title }}</p>
+    <p><strong>Description:</strong> {{ assignment.description }}</p>
+    <p>
+        <strong>Document:</strong>
+        <a href="{{ assignment.document.url }}">Download File</a>
+    </p>
+    <p><small>Submitted on: {{ assignment.submitted_at }}</small></p>
+</div>
+{% empty %}
+<div class="card">
+    <p>No assignments submitted yet.</p>
+</div>
+{% endfor %}
+
+{% endblock %}
